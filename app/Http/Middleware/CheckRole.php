@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckBranch
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,6 @@ class CheckBranch
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() &&  Auth::user()->branch == 1) 
-        {
-            return $next($request);
-        }
-
-        return redirect('home');
+        return $next($request);
     }
 }

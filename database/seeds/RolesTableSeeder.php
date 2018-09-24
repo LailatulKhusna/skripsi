@@ -12,11 +12,11 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $data = [[
-        	'branch_id' => 1,
         	'name' => 'admin',
+            'description' =>'sebagai admin'
         ],[
-        	'branch_id' => 2,
         	'name' => 'admin',
+            'description' =>'sebagai admin'
         ]];
         DB::table('roles')->insert($data);
     }

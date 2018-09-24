@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBranchsTable extends Migration
+class CreateFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateBranchsTable extends Migration
      */
     public function up()
     {
-        Schema::create('branchs', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('session_id');
+            $table->unsignedInteger('field_list_id');
             $table->string('name');
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('session_id')->references('id')->on('branchs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('field_list_id')->references('id')->on('field_lists')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +34,6 @@ class CreateBranchsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branchs');
+        Schema::dropIfExists('fields');
     }
 }

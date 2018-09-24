@@ -19,4 +19,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => ['web','auth']], function(){
+	
+	Route::get('/branch', function(){
+		return Auth::user();
+	});
+
+	Route::get('/home',function(){
+		return view('home');
+	});		
+
+});
 

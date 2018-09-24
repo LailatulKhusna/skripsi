@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	<div> {{ $myname }}</div>
+	<div> haiiiii</div>
 
 </body>
 </html>
