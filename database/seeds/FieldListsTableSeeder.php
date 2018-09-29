@@ -18,7 +18,7 @@ class FieldListsTableSeeder extends Seeder
         ],[
         	'branch_id' => 2,
         	'name' => 'Kedisiplinan',
-        	'description' => 'tentang kebersihan bengkel'
+        	'description' => 'tentang kedisplinan bengkel'
         ]];
 
         DB::table('field_lists')->insert($data);

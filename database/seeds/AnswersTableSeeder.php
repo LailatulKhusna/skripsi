@@ -11,6 +11,16 @@ class AnswersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $data = [[
+        	'question_id' => 1,
+        	'importance' => '1',
+        	'performance' => '2'
+        ],[
+        	'question_id' => 2,
+        	'importance' => '2',
+        	'performance' => '3'
+        ]];
+
+        DB::table('answers')->insert($data);
     }
 }
