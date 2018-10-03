@@ -32,6 +32,21 @@ class BiodataCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->addColumn([
+            'name'=>'name',
+            'label'=>'Nama'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'gender',
+            'label'=>'Jenis Kelamin'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'position',
+            'label'=>'Jabatan'
+        ]);
+        
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 

@@ -32,6 +32,16 @@ class BranchCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->addColumn([
+            'name'=>'name',
+            'label'=>'Cabang'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'description',
+            'label'=>'Deskripsi'
+        ]);
+    
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 

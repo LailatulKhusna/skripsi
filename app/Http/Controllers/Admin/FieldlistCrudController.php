@@ -31,6 +31,20 @@ class FieldlistCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        $this->crud->addColumn([
+            'name'=>'branch_id',
+            'label'=>'Cabang'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'name',
+            'label'=>'Bidang'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'description',
+            'label'=>'Deskripsi'
+        ]);
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();

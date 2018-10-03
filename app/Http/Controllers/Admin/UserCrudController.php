@@ -32,6 +32,24 @@ class UserCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->addField([
+            'name'=>'role_id',
+            'label'=>'As',
+            'type'=>'select',
+            'entity'=>'role',
+            'attribute'=>'name',
+            'model'=>'App\Models\Role'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'role_id',
+            'label'=>'As',
+            'type'=>'select',
+            'entity'=>'role',
+            'attribute'=>'name',
+            'model'=>'App\Models\Role'
+        ]);
+
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 

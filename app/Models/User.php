@@ -19,7 +19,7 @@ class User extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['role_id','name','email','password'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,7 +34,9 @@ class User extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -52,4 +54,8 @@ class User extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setPasswordAttibute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 }

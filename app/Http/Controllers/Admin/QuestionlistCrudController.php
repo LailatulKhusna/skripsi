@@ -31,6 +31,15 @@ class QuestionlistCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        $this->crud->addColumn([
+            'name'=>'field_list_id',
+            'label'=>'Daftar Bidang'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'name',
+            'label'=>'Kuisioner'
+        ]);
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();

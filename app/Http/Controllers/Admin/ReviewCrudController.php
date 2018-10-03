@@ -31,7 +31,8 @@ class ReviewCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-
+        
+        $this->crud->removeAllButtons();
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
