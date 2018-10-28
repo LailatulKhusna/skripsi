@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 
 class QuestionController extends Controller
 {
@@ -14,7 +15,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $questions=Question::get();
+
+        return response()->json($questions);
     }
 
     /**
@@ -25,7 +28,11 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question=new Question;
+        $question->fill($request->all());
+        $question->save();
+
+        return response()->json($question);
     }
 
     /**
@@ -36,7 +43,8 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $question=Question::find($id);
+        return response()->json($question);
     }
 
     /**
@@ -48,7 +56,11 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question= Question::find($id);
+        $question->fill($request->all());
+        $question->save();
+
+        return response()->json($question);
     }
 
     /**
@@ -59,6 +71,9 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question=Question::find($id);
+        $question->delete();
+
+        return response()->json($question);
     }
 }

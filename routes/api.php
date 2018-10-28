@@ -16,3 +16,22 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('oauthclients','API\OauthClientController');
+
+Route::group(['middleware'=>'api','namespace'=>'API'],function(){
+	Route::apiResources([
+		"branchs"=>"BranchController",
+		"roles"=>"RoleController",
+		"users"=>"UserController",
+		"biodatas"=>"BiodataController",
+		"fieldlists"=>"FieldListController",
+		"questionlists"=>"QuestionListController",
+		"sessions"=>"SessionController",
+		"fields"=>"FieldController",
+		"questions"=>"QuestionController",
+		"answers"=>"AnswerController",
+		"reviewlists"=>"ReviewListController",
+		"reviews"=>"ReviewController"
+	]);
+
+});

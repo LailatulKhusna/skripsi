@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Answer;
+use App\OauthClient;
 
-class AnswerController extends Controller
+class OauthClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        $answers=Answer::get();
-        return response()->json($answers);
+        $oauthclients=OauthClient::get();
+        return response()->json($oauthclients);
     }
 
     /**
@@ -27,11 +27,11 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $answer= new Answer;
-        $answer->fill($request->all());
-        $answer->save();
+        $oauthclient= new OauthClient;
+        $oauthclient->fill($request->all());
+        $oauthclient->save();
 
-        return response()->json($answer);
+        return response()->json($oauthclient);
     }
 
     /**
@@ -42,8 +42,8 @@ class AnswerController extends Controller
      */
     public function show($id)
     {
-        $answer= Answer::find($id);
-        return response()->json($answer);
+        $oauthclient= OauthClient::find($id);
+        return response()->json($oauthclient);
     }
 
     /**
@@ -55,11 +55,11 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $answer= Answer::find($id);
-         $answer->fill($request->all());
-         $answer->save();
+        $oauthclient= OauthClient::find($id);
+        $oauthclient->fill($request->all());
+        $oauthclient->save();
 
-         return response()->json($answer);
+        return response()->json($oauthclient);
     }
 
     /**
@@ -70,9 +70,10 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        $answer= Answer::find($id);
-        $answer->delete();
+        $oauthclient= OauthClient::find($id);
+        $oauthclient->delete();
         
-        return response()->json($answer);
+        return response()->json($oauthclient);
+
     }
 }

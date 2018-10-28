@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Reviewlist;
+
 
 class ReviewListController extends Controller
 {
@@ -14,7 +16,8 @@ class ReviewListController extends Controller
      */
     public function index()
     {
-        //
+        $reviewlists= Reviewlist::get();
+        return response()->json($reviewlists);
     }
 
     /**
@@ -25,7 +28,11 @@ class ReviewListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reviewlist= new Reviewlist();
+        $reviewlist->fill($request->all());
+        $reviewlist->save();
+
+        return response()->json($reviewlist);   
     }
 
     /**
@@ -36,8 +43,10 @@ class ReviewListController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $reviewlist=Reviewlist::find($id);
+        return response()->json($reviewlist);
+
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -48,7 +57,11 @@ class ReviewListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reviewlist= Reviewlist::find($id);
+        $reviewlist->fill($request->all());
+        $reviewlist->save();
+
+        return response()->json($reviewlist);
     }
 
     /**
@@ -59,6 +72,9 @@ class ReviewListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reviewlist= Reviewlist::find($id);
+        $reviewlist->delete();
+
+        return response()->json($reviewlist);
     }
 }

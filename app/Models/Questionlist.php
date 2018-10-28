@@ -18,8 +18,8 @@ class Questionlist extends Model
     protected $table = 'question_lists';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = ['field_list_id','name'];
+    protected $guarded = ['id'];
+    // protected $fillable = ['field_list_id','name'];
     // protected $hidden = [];
     // protected $dates = [];
 

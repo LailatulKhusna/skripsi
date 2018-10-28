@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Field;
 
 class FieldController extends Controller
 {
@@ -14,7 +15,8 @@ class FieldController extends Controller
      */
     public function index()
     {
-        //
+        $fields=Field::get();
+        return response()->json($fields);
     }
 
     /**
@@ -25,7 +27,11 @@ class FieldController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $field=new Field;
+        $field->fill($request->all());
+        $field->save();
+
+        return response()->json($field);
     }
 
     /**
@@ -36,7 +42,8 @@ class FieldController extends Controller
      */
     public function show($id)
     {
-        //
+        $field=Field::find($id);
+        return response()->json($field);
     }
 
     /**
@@ -48,7 +55,11 @@ class FieldController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $field= Field::find($id);
+        $field->fill($request->all());
+        $field->save();
+
+        return response()->json($field);
     }
 
     /**
@@ -59,6 +70,9 @@ class FieldController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $field=Field::find($id);
+        $field->delete();
+
+        return response()->json($field);
     }
 }

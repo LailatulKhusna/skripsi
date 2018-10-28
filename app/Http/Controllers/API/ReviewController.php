@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Review;
 
 class ReviewController extends Controller
 {
@@ -14,7 +15,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::get();
+        return response()->json($reviews);
     }
 
     /**
@@ -25,7 +27,11 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $review= new Review();
+        $review->fill($request->all());
+        $review->save();
+
+        return response()->json($review);
     }
 
     /**
@@ -36,7 +42,8 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //
+        $review = Review::find($id);
+        return response()->json($review);
     }
 
     /**
@@ -48,7 +55,11 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $review = Review::find($id);
+        $review->fill($request->all());
+        $review->save();
+
+        return response()->json($review);
     }
 
     /**
@@ -59,6 +70,7 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $review = Review::find($id);
+        return response()->json($review);
     }
 }
