@@ -19,7 +19,7 @@ class Session extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['branch_id','name'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,6 +34,9 @@ class Session extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function branch(){
+        return $this->belongsTo('App\Models\Branch');
+    }
 
     /*
     |--------------------------------------------------------------------------

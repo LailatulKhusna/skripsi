@@ -19,7 +19,7 @@ class Biodata extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['name','gender','position','user_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -35,6 +35,7 @@ class Biodata extends Model
     |--------------------------------------------------------------------------
     */
 
+   
     /*
     |--------------------------------------------------------------------------
     | SCOPES

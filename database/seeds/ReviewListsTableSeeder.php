@@ -13,10 +13,10 @@ class ReviewListsTableSeeder extends Seeder
     {
          $data=[[
         	'branch_id' => 1,
-        	'name' => 'saya rasa masih perlu diperhatikan bagian pemberitahuan informasi pengambilan motor?'
+        	'name' => 'Silahkan masukan kritik dan saran dibawah ini'
         ],[
         	'branch_id' => 2,
-        	'name' => 'Mohon ditinjau lagi kebersihan bengkel'
+        	'name' => 'Anda dapat menambahkan kritik dan saran dibawah ini'
         ]];
 
         DB::table('review_lists')->insert($data);

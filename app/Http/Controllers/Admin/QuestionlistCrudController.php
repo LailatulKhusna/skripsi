@@ -31,10 +31,25 @@ class QuestionlistCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+
+        $this->crud->addField([
+            'name'=>'field_list_id',
+            'label'=>'Bidang',
+            'type'=>'select',
+            'entity'=>'fieldlist',
+            'attribute'=>'name',
+            'model'=>'App\Models\Fieldlist'
+        ]);
+
         $this->crud->addColumn([
             'name'=>'field_list_id',
-            'label'=>'Daftar Bidang'
+            'label'=>'Bidang',
+            'type'=>'select',
+            'entity'=>'fieldlist',
+            'attribute'=>'name',
+            'model'=>'App\Models\Fieldlist'
         ]);
+
 
         $this->crud->addColumn([
             'name'=>'name',

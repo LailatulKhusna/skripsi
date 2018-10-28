@@ -19,7 +19,7 @@ class Questionlist extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['field_list_id','name'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,6 +34,9 @@ class Questionlist extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function fieldlist(){
+        return $this->belongsTo('App\Models\Fieldlist','field_list_id','id');
+    }
 
     /*
     |--------------------------------------------------------------------------

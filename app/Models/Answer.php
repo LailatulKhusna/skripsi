@@ -19,7 +19,7 @@ class Answer extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['question_id','importance','performance'];
     // protected $hidden = [];
     // protected $dates = [];
 

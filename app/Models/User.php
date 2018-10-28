@@ -19,7 +19,7 @@ class User extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['role_id','name','email','password'];
+    protected $fillable = ['role_id','branch_id','name','email','password'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -37,6 +37,12 @@ class User extends Model
     public function role(){
         return $this->belongsTo('App\Models\Role');
     }
+
+    public function branch(){
+        return $this->belongsTo('App\Models\Branch');
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

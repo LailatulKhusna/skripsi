@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Illuminate\Support\Facades\Auth;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\FieldlistRequest as StoreRequest;
@@ -31,9 +32,25 @@ class FieldlistCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        $this->crud->query->where('branch_id',Auth::user()->branch_id);
+        
+        
+         $this->crud->addField([
+            'name'=>'branch_id',
+            'label'=>'Cabang',
+            'type'=>'select',
+            'entity'=>'branch',
+            'attribute'=>'name',
+            'model'=>'App\Models\Branch'
+        ]);
+
         $this->crud->addColumn([
             'name'=>'branch_id',
-            'label'=>'Cabang'
+            'label'=>'Cabang',
+            'type'=>'select',
+            'entity'=>'branch',
+            'attribute'=>'name',
+            'model'=>'App\Models\Branch'
         ]);
 
         $this->crud->addColumn([

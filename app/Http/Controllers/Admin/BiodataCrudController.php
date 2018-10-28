@@ -32,6 +32,7 @@ class BiodataCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+
         $this->crud->addColumn([
             'name'=>'name',
             'label'=>'Nama'

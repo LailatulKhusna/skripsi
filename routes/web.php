@@ -12,12 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin/login');
+});
+
+Route::get('/admin',function(){
+	return redirect('admin/login');
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>'auth'],function(){
+	Route::get('beranda','DashboardController@index');
 	Route::resources([
 		"branchs"=>"BranchController",
 		"roles"=>"RoleController",

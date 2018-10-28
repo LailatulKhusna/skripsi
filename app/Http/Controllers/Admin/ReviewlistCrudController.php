@@ -32,6 +32,29 @@ class ReviewlistCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->addField([
+            'name'=>'branch_id',
+            'label'=>'Cabang',
+            'type'=>'select',
+            'entity'=>'branch',
+            'attribute'=>'name',
+            'model'=>'App\Models\Branch'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'branch_id',
+            'label'=>'Cabang',
+            'type'=>'select',
+            'entity'=>'branch',
+            'attribute'=>'name',
+            'model'=>'App\Models\Branch'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'name',
+            'label'=>'Nama'
+        ]);
+
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 

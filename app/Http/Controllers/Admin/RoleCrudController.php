@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Auth;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
@@ -31,6 +32,8 @@ class RoleCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        $this->crud->query->where('branch_id',Auth::user()->branch_id);
+
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
