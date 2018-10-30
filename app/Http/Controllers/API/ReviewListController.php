@@ -16,7 +16,7 @@ class ReviewListController extends Controller
      */
     public function index()
     {
-        $reviewlists= Reviewlist::get();
+        $reviewlists= Reviewlist::with('branch','review')->get();
         return response()->json($reviewlists);
     }
 
@@ -43,7 +43,7 @@ class ReviewListController extends Controller
      */
     public function show($id)
     {
-        $reviewlist=Reviewlist::find($id);
+        $reviewlist=Reviewlist::with('branch','review')->find($id);
         return response()->json($reviewlist);
 
     } 

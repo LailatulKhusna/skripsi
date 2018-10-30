@@ -15,7 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::get();   
+        $roles = Role::with('user')->get();   
         return response()->json($roles);
         
     }
@@ -43,7 +43,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::find($id);
+        $role = Role::with('user')->find($id);
         return response()->json($role);
     }
 

@@ -15,7 +15,7 @@ class QuestionListController extends Controller
      */
     public function index()
     {
-        $questionlists= Questionlist::get();
+        $questionlists= Questionlist::with('field_list','question')->get();
         return response()->json($questionlists);
     }
 
@@ -56,7 +56,7 @@ class QuestionListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $questionlist= Questionlist::find($id);
+        $questionlist= Questionlist::with('field_list','question')->find($id);
         $questionlist->fill($request->all());
         $questionlist->save();
 

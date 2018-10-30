@@ -15,7 +15,7 @@ class FieldController extends Controller
      */
     public function index()
     {
-        $fields=Field::get();
+        $fields=Field::with('session','field_list','question')->get();
         return response()->json($fields);
     }
 
@@ -42,7 +42,7 @@ class FieldController extends Controller
      */
     public function show($id)
     {
-        $field=Field::find($id);
+        $field=Field::with('session','field_list','question')->find($id);
         return response()->json($field);
     }
 
@@ -55,7 +55,7 @@ class FieldController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $field= Field::find($id);
+        $field= Field::with('session','field_list','question')->find($id);
         $field->fill($request->all());
         $field->save();
 

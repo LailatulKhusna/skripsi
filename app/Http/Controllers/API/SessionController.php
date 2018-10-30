@@ -15,7 +15,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions= Session::get();
+        $sessions= Session::with('branch','field','review')->get();
         return response()->json($sessions);
     }
 
@@ -55,7 +55,7 @@ class SessionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sessions= Session::find($id);
+        $sessions= Session::with('branch','field','review')->find($id);
         $sessions->fill($request->all());
         $sessions->save();
 

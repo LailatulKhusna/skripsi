@@ -15,7 +15,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches=Branch::get();
+        $branches = Branch::with('sessions','users','field_lists','review_lists')->get();
         return response()->json($branches);
     }
 
@@ -42,7 +42,7 @@ class BranchController extends Controller
      */
     public function show($id)
     {
-        $branch= Branch::find($id);
+        $branch= Branch::with('sessions','users','field_lists','review_lists')->find($id);
         return response()->json($branch);
     }
 

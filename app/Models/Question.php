@@ -34,6 +34,20 @@ class Question extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function field()
+    {
+        return $this->belongsTo('App\Models\Field');
+    }
+
+    public function question_list()
+    {
+        return $this->belongsTo('App\Models\QuestionList');
+    }
+
+    public function answer()
+    {
+        return $this->hasMany('App\Models\Answer'); 
+    }
 
     /*
     |--------------------------------------------------------------------------

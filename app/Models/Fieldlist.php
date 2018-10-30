@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Fieldlist extends Model
+class FieldList extends Model
 {
     use CrudTrait;
 
@@ -38,6 +38,15 @@ class Fieldlist extends Model
         return $this->belongsTo('App\Models\Branch');
     }
 
+    public function question_list()
+    {
+        return $this->hasMany('App\Models\QuestionList');
+    }
+
+    public function field()
+    {
+        return $this->hasMany('App\Models\Field');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

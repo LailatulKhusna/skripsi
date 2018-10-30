@@ -15,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions=Question::get();
+        $questions=Question::with('field','question_list','answer')->get();
 
         return response()->json($questions);
     }
@@ -43,7 +43,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        $question=Question::find($id);
+        $question=Question::with('field','question_list','answer')->find($id);
         return response()->json($question);
     }
 

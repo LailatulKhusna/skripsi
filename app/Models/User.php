@@ -18,8 +18,8 @@ class User extends Model
     protected $table = 'users';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = ['role_id','branch_id','name','email','password'];
+    protected $guarded = ['id'];
+    // protected $fillable = ['role_id','branch_id','name','email','password'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -42,6 +42,10 @@ class User extends Model
         return $this->belongsTo('App\Models\Branch');
     }
 
+    public function biodata(){
+        return $this->hasOne('App\Models\Biodata');
+    }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +64,7 @@ class User extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public function setPasswordAttibute($value){
+    public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
 

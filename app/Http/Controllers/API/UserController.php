@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-USE App\Models\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users= User::get();
+        //eloquent ORM
+        $users = User::with('branch','biodata','role')->get();
+
         return response()->json($users);
     }
 
@@ -42,7 +44,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user=User::find($id);
+        $user=User::with('branch','biodata','role')->find($id);
         return response()->json($user);
     }
 

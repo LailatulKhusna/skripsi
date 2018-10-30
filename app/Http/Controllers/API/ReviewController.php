@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::get();
+        $reviews = Review::with('session','review_list')->get();
         return response()->json($reviews);
     }
 
@@ -55,7 +55,7 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $review = Review::find($id);
+        $review = Review::with('session','review_list')->find($id);
         $review->fill($request->all());
         $review->save();
 

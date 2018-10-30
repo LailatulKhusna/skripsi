@@ -34,6 +34,14 @@ class Review extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function session()
+    {
+        return $this->belongsTo('App\Models\Session');
+    }
+    public function review_list()
+    {
+        return $this->belongsTo('App\Models\ReviewList');
+    }
 
     /*
     |--------------------------------------------------------------------------

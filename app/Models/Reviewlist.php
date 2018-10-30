@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Reviewlist extends Model
+class ReviewList extends Model
 {
     use CrudTrait;
 
@@ -38,6 +38,10 @@ class Reviewlist extends Model
         return $this->belongsTo('App\Models\Branch');
     }
 
+    public function review()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

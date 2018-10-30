@@ -15,7 +15,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        $answers=Answer::get();
+        $answers=Answer::with('question')->get();
         return response()->json($answers);
     }
 
@@ -42,7 +42,7 @@ class AnswerController extends Controller
      */
     public function show($id)
     {
-        $answer= Answer::find($id);
+        $answer= Answer::with('question')->find($id);
         return response()->json($answer);
     }
 

@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::apiResource('oauthclients','API\OauthClientController');
 
-Route::group(['middleware'=>'api','namespace'=>'API'],function(){
+Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::apiResources([
 		"branchs"=>"BranchController",
 		"roles"=>"RoleController",
