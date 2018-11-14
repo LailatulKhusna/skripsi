@@ -18,8 +18,8 @@ class FieldList extends Model
     protected $table = 'field_lists';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
-    protected $fillable = ['branch_id','name','description'];
+    protected $guarded = ['id'];
+    // protected $fillable = ['branch_id','name','description'];
     // protected $hidden = [];
     // protected $dates = [];
 

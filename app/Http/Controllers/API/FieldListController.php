@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Fieldlist;
+use App\Models\FieldList;
 
 class FieldListController extends Controller
 {
@@ -15,7 +15,7 @@ class FieldListController extends Controller
      */
     public function index()
     {
-        $fieldlists= Fieldlist::with('branch','question_list','field')->get();
+        $fieldlists= FieldList::with('branch','question_list','field')->get();
         return response()->json($fieldlists);
     }
 
@@ -27,7 +27,7 @@ class FieldListController extends Controller
      */
     public function store(Request $request)
     {
-        $fieldlist= new Fieldlist;
+        $fieldlist= new FieldList;
         $fieldlist->fill($request->all());
         $fieldlist->save();
 
@@ -42,7 +42,7 @@ class FieldListController extends Controller
      */
     public function show($id)
     {
-        $fieldlist=Fieldlist::find($id);
+        $fieldlist=FieldList::find($id);
         
         return response()->json($fieldlist);
     }
@@ -56,7 +56,7 @@ class FieldListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fieldlist=Fieldlist::find($id);
+        $fieldlist=FieldList::find($id);
         $fieldlist->fill($request->all());
         $fieldlist->save();
 
@@ -71,7 +71,7 @@ class FieldListController extends Controller
      */
     public function destroy($id)
     {
-        $fieldlist= Fieldlist::with('branch','question_list','field')->find($id);
+        $fieldlist= FieldList::with('branch','question_list','field')->find($id);
         $fieldlist->delete();
 
         return response()->json($fieldlist);

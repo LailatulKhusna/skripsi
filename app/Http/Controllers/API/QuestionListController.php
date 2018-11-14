@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Questionlist;
+use App\Models\QuestionList;
 
 class QuestionListController extends Controller
 {
@@ -15,7 +15,7 @@ class QuestionListController extends Controller
      */
     public function index()
     {
-        $questionlists= Questionlist::with('field_list','question')->get();
+        $questionlists= QuestionList::with('field_list','question')->get();
         return response()->json($questionlists);
     }
 
@@ -27,7 +27,7 @@ class QuestionListController extends Controller
      */
     public function store(Request $request)
     {
-        $questionlist= new Questionlist();
+        $questionlist= new QuestionList();
         $questionlist->fill($request->all());
         $questionlist->save();
 
@@ -43,7 +43,7 @@ class QuestionListController extends Controller
      */
     public function show($id)
     {
-        $questionlist= Questionlist::find($id);
+        $questionlist= QuestionList::find($id);
         return response()->json($questionlist);
     }
 
@@ -56,7 +56,7 @@ class QuestionListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $questionlist= Questionlist::with('field_list','question')->find($id);
+        $questionlist= QuestionList::with('field_list','question')->find($id);
         $questionlist->fill($request->all());
         $questionlist->save();
 
@@ -71,7 +71,7 @@ class QuestionListController extends Controller
      */
     public function destroy($id)
     {
-        $questionlist= Questionlist::find($id);
+        $questionlist= QuestionList::find($id);
         $questionlist->delete();
 
         return response()->json($questionlist);
