@@ -42,7 +42,7 @@ class FieldListController extends Controller
      */
     public function show($id)
     {
-        $fieldlist=FieldList::find($id);
+        $fieldlist=FieldList::with('branch','question_list','field')->find($id)->get();
         
         return response()->json($fieldlist);
     }
