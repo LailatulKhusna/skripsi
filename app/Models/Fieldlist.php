@@ -38,7 +38,7 @@ class FieldList extends Model
         return $this->belongsTo('App\Models\Branch');
     }
 
-    public function question_list()
+    public function question_lists()
     {
         return $this->hasMany('App\Models\QuestionList');
     }
