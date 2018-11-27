@@ -22,7 +22,7 @@ class QuestionlistCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Questionlist');
+        $this->crud->setModel('App\Models\QuestionList');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/questionlist');
         $this->crud->setEntityNameStrings('questionlist', 'questionlists');
 
@@ -36,18 +36,18 @@ class QuestionlistCrudController extends CrudController
             'name'=>'field_list_id',
             'label'=>'Bidang',
             'type'=>'select',
-            'entity'=>'fieldlist',
+            'entity'=>'field_list',
             'attribute'=>'name',
-            'model'=>'App\Models\Fieldlist'
+            'model'=>'App\Models\FieldList'
         ]);
 
         $this->crud->addColumn([
             'name'=>'field_list_id',
             'label'=>'Bidang',
             'type'=>'select',
-            'entity'=>'fieldlist',
+            'entity'=>'field_list',
             'attribute'=>'name',
-            'model'=>'App\Models\Fieldlist'
+            'model'=>'App\Models\FieldList'
         ]);
 
 
@@ -80,5 +80,5 @@ class QuestionlistCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-    }
+    }   
 }

@@ -34,7 +34,8 @@ class QuestionList extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function field_list(){
+    public function field_list()
+    {
         return $this->belongsTo('App\Models\FieldList','field_list_id','id');
     }
 
