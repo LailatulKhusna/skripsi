@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class QuestionList extends Model
 {
-    //
+    public function field_list(){
+        return $this->belongsTo('App\Models\Fieldlist','field_list_id','id');
+    }
+
+    public function question()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
 }

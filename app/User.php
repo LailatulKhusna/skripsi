@@ -32,4 +32,16 @@ class User extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
+
+     public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    public function branch(){
+        return $this->belongsTo('App\Models\Branch');
+    }
+
+    public function biodata(){
+        return $this->hasOne('App\Models\Biodata');
+    }
 }
