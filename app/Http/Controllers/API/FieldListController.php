@@ -15,7 +15,7 @@ class FieldListController extends Controller
      */
     public function index()
     {
-        $fieldlists= FieldList::with('branch','question_list','field')->get();
+        $fieldlists= FieldList::with('branch','question_lists','field')->get();
         return response()->json($fieldlists);
     }
 
@@ -42,7 +42,7 @@ class FieldListController extends Controller
      */
     public function show($id)
     {
-        $fieldlist=FieldList::with('branch','question_list','field')->find($id);
+        $fieldlist=FieldList::with('branch','question_lists','field')->find($id);
         
         return response()->json($fieldlist);
     }
@@ -71,7 +71,7 @@ class FieldListController extends Controller
      */
     public function destroy($id)
     {
-        $fieldlist= FieldList::with('branch','question_list','field')->find($id);
+        $fieldlist= FieldList::with('branch','question_lists','field')->find($id);
         $fieldlist->delete();
 
         return response()->json($fieldlist);
