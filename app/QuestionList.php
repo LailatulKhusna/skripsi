@@ -14,5 +14,9 @@ class QuestionList extends Model
     {
         return $this->hasMany('App\Models\Question');
     }
+    public function question_lists()
+    {
+        return $this->hasMany('App\Models\QuestionList');
+    }
 
 }
