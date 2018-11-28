@@ -27,11 +27,11 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json($request);
-        
-        $sessions= new Session();
-        $sessions->fill($request->all());
-        $sessions->save();
+        // return response()->json($request);
+
+        $session = new Session;
+        $session->fill($request['session']);
+        $session->save();
 
         return response()->json($sessions);
     }
