@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user()->load('role','branch.field_lists.question_list','branch.review_lists','biodata');
+    return $request->user()->load('role','branch.field_lists.question_lists','branch.review_lists','biodata');
 });
 Route::apiResource('oauthclients','API\OauthClientController');
 
