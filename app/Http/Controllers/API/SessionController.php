@@ -27,6 +27,8 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
+        return response()->json($request);
+        
         $sessions= new Session();
         $sessions->fill($request->all());
         $sessions->save();
