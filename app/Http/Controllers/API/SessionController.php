@@ -33,7 +33,7 @@ class SessionController extends Controller
         $session->fill($request['session']);
         $session->save();
 
-        return response()->json($sessions);
+        return response()->json($session);
     }
 
     /**
