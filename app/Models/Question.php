@@ -44,9 +44,9 @@ class Question extends Model
         return $this->belongsTo('App\Models\QuestionList');
     }
 
-    public function answers()
+    public function answer()
     {
-        return $this->hasMany('App\Models\Answer'); 
+        return $this->hasOne('App\Models\Answer'); 
     }
 
     /*
