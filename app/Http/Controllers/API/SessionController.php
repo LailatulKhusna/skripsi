@@ -42,7 +42,7 @@ class SessionController extends Controller
            foreach ($request['fields'] as $field) {
                 $fields = new Field;
                 $fields->session_id=$session->id;
-                $fields->field_list_id=$field['field_list_id'];
+                $fields->field_list_id=$field['id'];
                 $fields->name=$field['name'];
                 $fields->description=$field['description'];
                 $fields->save();
