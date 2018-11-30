@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Session;
 use App\Models\Field;
 use App\Models\Review;
+use App\Models\Question;
 
 class SessionController extends Controller
 {
@@ -46,7 +47,16 @@ class SessionController extends Controller
                 $fields->name=$field['name'];
                 $fields->description=$field['description'];
                 $fields->save();
-            } 
+                
+                foreach ($field['question_lists'] as $question_list) {
+                    $questions = new Question;
+                    $questions->field_id=$fields->id;
+                    $questions->question_list_id=$question_list['id'];
+                    $questions->name=$question_list['name'];
+                    $questions->save();
+                }
+            }
+
         }
 
         if(isset($request['review'])){
