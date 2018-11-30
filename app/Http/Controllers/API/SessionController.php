@@ -35,6 +35,19 @@ class SessionController extends Controller
         $session->name = $request['session']['name'].($count+1);
         $session->save();
 
+
+        if(isset($request['fields'])){
+           
+        }
+
+        if(isset($request['review'])){
+            $review = new Review;
+            $review->session_id= $session->id;
+            $review->name=$request['review']['name'];
+            $review->save();
+        }
+
+
         return response()->json($session);
     }
 
@@ -62,6 +75,8 @@ class SessionController extends Controller
         $sessions= Session::with('branch','field','review')->find($id);
         $sessions->fill($request->all());
         $sessions->save();
+
+        
 
         return response()->json($sessions);
     }
