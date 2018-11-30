@@ -39,7 +39,14 @@ class SessionController extends Controller
 
 
         if(isset($request['fields'])){
-           
+           foreach ($request['fields'] as $field) {
+                $fields = new Field;
+                $fields->session_id=$session->id;
+                $fields->field_list_id=$field['field_list_id'];
+                $fields->name=$field['name'];
+                $fields->description=$field['description'];
+                $fields->save();
+            } 
         }
 
         if(isset($request['review'])){
