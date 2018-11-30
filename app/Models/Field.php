@@ -44,7 +44,7 @@ class Field extends Model
         return $this->belongsTo('App\Models\FieldList');
     }
 
-    public function question()
+    public function questions()
     {
         return $this->hasMany('App\Models\Question');
     }
