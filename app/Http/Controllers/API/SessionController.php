@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Session;
+use App\Models\Field;
+use App\Models\Review;
 
 class SessionController extends Controller
 {
