@@ -40,7 +40,7 @@ class SessionController extends Controller
         $session->save();
 
 
-        if(isset($request['fields'])){
+        if(isset($request['fields']) && sizeof($request['fields'])>0){
            foreach ($request['fields'] as $field) {
                 $fields = new Field;
                 $fields->session_id=$session->id;
