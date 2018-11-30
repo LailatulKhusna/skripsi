@@ -43,7 +43,7 @@ class Session extends Model
         return $this->hasOne('App\Models\Review');
     }
 
-    public function field()
+    public function fields()
     {
         return $this->hasMany('App\Models\Review');
     }
