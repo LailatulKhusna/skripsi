@@ -45,7 +45,7 @@ class Session extends Model
 
     public function fields()
     {
-        return $this->hasMany('App\Models\Review');
+        return $this->hasMany('App\Models\Field');
     }
     /*
     |--------------------------------------------------------------------------
