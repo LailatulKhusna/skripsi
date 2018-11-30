@@ -49,8 +49,8 @@ class SessionController extends Controller
             $review->save();
         }
 
-
-        return response()->json($session);
+        $result = Session::with('review', 'fields')->find($session->id);
+        return response()->json($result);
     }
 
     /**
