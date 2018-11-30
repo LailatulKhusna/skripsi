@@ -8,6 +8,7 @@ use App\Models\Session;
 use App\Models\Field;
 use App\Models\Review;
 use App\Models\Question;
+use App\Models\Answer;
 
 class SessionController extends Controller
 {
@@ -54,6 +55,13 @@ class SessionController extends Controller
                     $questions->question_list_id=$question_list['id'];
                     $questions->name=$question_list['name'];
                     $questions->save();
+
+
+                    $answers = new Answer;
+                    $answers->question_id=$questions->id;
+                    $answers->importance=$question_list['importance'];
+                    $answers->performance=$question_list['performance'];
+                    $answers->save();
                 }
             }
 
