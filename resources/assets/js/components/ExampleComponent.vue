@@ -17,6 +17,11 @@
       },
       mounted () {
         this.renderChart(this.chartdata, this.options)
+      },
+      created (){
+        axios.get('/apisessions').then(res=>{
+
+        });
       }
     }
 

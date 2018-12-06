@@ -25,6 +25,7 @@
             </div>
         </div>
     </div> --}}
+    {{-- {{ dd($fields) }} --}}
     <example-component></example-component>
 
 @endsection

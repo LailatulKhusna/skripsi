@@ -37,5 +37,9 @@ Route::group(['middleware'=>'auth'],function(){
 		"reviewlists"=>"ReviewListController",
 		"reviews"=>"ReviewController"
 	]);
+
+	Route::apiResources([
+		'apisessions'=>'API\SessionController'
+	]);
 });
 

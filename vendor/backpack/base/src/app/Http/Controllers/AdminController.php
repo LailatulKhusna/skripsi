@@ -1,6 +1,7 @@
 <?php
 
 namespace Backpack\Base\app\Http\Controllers;
+use App\Models\Session;
 
 class AdminController extends Controller
 {
@@ -21,9 +22,51 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        $this->data['title'] = trans('backpack::base.dashboard'); // set the page title
+        $title = "Laporan"; // set the page title
 
-        return view('backpack::dashboard', $this->data);
+        $sessions= Session::with('branch','fields.questions.answer','review')->get();
+
+        foreach ($sessions as $session) {
+
+            foreach ($session['fields'] as $field) {
+
+                $data[$field['name']]['total_performance'] = 0;
+                $data[$field['name']]['total_importance'] = 0;
+                $data[$field['name']]['total_score'] = 0;
+                $data[$field['name']]['csi'] = 0;
+                $data[$field['name']]['performance']['tp'] = 0;
+                $data[$field['name']]['performance']['kp'] = 0;
+                $data[$field['name']]['performance']['cp'] = 0;
+                $data[$field['name']]['performance']['p']  = 0;
+                $data[$field['name']]['performance']['sp'] = 0;
+                
+                foreach ($field['questions'] as $question) {
+
+                    $data[$field['name']]['total_performance'] += $question['answer']['performance'];
+                    $data[$field['name']]['total_importance'] += $question['answer']['importance'];
+                    $data[$field['name']]['total_score'] += ($question['answer']['performance']*$question['answer']['importance']);
+
+                    if ($question['answer']['performance'] == 1) {
+                        $data[$field['name']]['performance']['tp'] += $question['answer']['performance'];
+                    } elseif ($question['answer']['performance'] == 2) {
+                        $data[$field['name']]['performance']['kp'] += $question['answer']['performance'];
+                    } elseif ($question['answer']['performance'] == 3) {
+                        $data[$field['name']]['performance']['cp'] += $question['answer']['performance'];
+                    } elseif ($question['answer']['performance'] == 4) {
+                        $data[$field['name']]['performance']['p'] += $question['answer']['performance'];
+                    } elseif ($question['answer']['performance'] == 5) {
+                        $data[$field['name']]['performance']['sp'] += $question['answer']['performance'];
+                    }
+
+                }
+
+                $data[$field['name']]['csi'] = ($data[$field['name']]['total_score']/(5*$data[$field['name']]['total_importance']))*100;
+
+            }
+
+        }
+
+        return view('backpack::dashboard', ['title'=>$title,'fields'=>$data]);
     }
 
     /**

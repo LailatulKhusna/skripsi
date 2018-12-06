@@ -47,6 +47,9 @@ class Session extends Model
     {
         return $this->hasMany('App\Models\Field');
     }
+
+
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
