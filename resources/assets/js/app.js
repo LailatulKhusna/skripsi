@@ -17,6 +17,8 @@ import Chart from 'chart.js'
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('chart-performance-component', require('./components/ChartPerformanceComponent.vue'));
+Vue.component('chart-csi-component', require('./components/ChartCsiComponent.vue'));
 
 const app = new Vue({
     el: '#app'

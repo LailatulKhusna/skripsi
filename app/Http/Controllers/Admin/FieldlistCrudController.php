@@ -23,7 +23,7 @@ class FieldlistCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Fieldlist');
+        $this->crud->setModel('App\Models\FieldList');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/fieldlist');
         $this->crud->setEntityNameStrings('fieldlist', 'fieldlists');
 
