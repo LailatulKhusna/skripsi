@@ -29,15 +29,17 @@
     @foreach($fields as $f => $field)
         <div class="row">
             <div class="col-sm-6">
-                <h1>Bidang {{ $f }}</h1>
-                <chart-performance-component :chartdata="{{ json_encode($field['performance']) }}"></chart-performance-component>
+                <div class="jumbotron">
+                    <h1>Bidang {{ $f }}</h1>
+                    <chart-performance-component :chartdata="{{ json_encode($field['performance']) }}"></chart-performance-component>
 
-                <p><h4>Keterangan Grafik :</h4></p>
-                <h5>TP = Tidak Puas</h5>
-                <h5>KP = Kurang Puas</h5>
-                <h5>CP = Cukup Puas</h5>
-                <h5>P =  Puas</h5>
-                <h5>SP = Sangat Puas</h5>
+                    <p><h4>Keterangan Grafik :</h4></p>
+                    <h5>TP = Tidak Puas</h5>
+                    <h5>KP = Kurang Puas</h5>
+                    <h5>CP = Cukup Puas</h5>
+                    <h5>P =  Puas</h5>
+                    <h5>SP = Sangat Puas</h5>
+                <div class="jumbotron">
             </div>
             <div class="col-sm-6">
                 <h1>Hasil CSI</h1>

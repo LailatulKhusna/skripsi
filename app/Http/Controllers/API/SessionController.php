@@ -115,7 +115,7 @@ class SessionController extends Controller
         }
 
         $result = Session::with('review', 'fields.questions.answer')->find($session->id);
-        return response()->json($result);
+        return response()->json([$result,$request]);
     }
 
     /**
