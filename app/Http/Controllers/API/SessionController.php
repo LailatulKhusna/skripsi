@@ -72,8 +72,7 @@ class SessionController extends Controller
     public function store(Request $request)
     {
         // return response()->json($request);
-        $count = Session::where('branch_id',$request['session']['branch_id
-            '])->count();
+        $count = Session::where('branch_id',$request['session']['branch_id'])->count();
         $session = new Session;
         $session->branch_id = $request['session']['branch_id'];
         $session->name = $request['session']['name'].($count+1);
