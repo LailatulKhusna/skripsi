@@ -60,7 +60,7 @@ class AdminController extends Controller
 
                 }
 
-                $data[$field['name']]['csi'] = number_format(($data[$field['name']]['total_score']/(5*$data[$field['name']]['total_importance']))*100,0,'','');
+                $data[$field['name']]['csi'] = ($data[$field['name']]['total_score']/(5*$data[$field['name']]['total_importance']))*100;
 
             }
 
