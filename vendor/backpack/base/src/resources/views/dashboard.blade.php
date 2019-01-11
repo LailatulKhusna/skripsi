@@ -14,18 +14,6 @@
 
 
 @section('content')
-    {{-- <div class="row">
-        <div class="col-md-12">
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <div class="box-title">{{ trans('backpack::base.login_status') }}</div>
-                </div>
-
-                <div class="box-body">{{ trans('backpack::base.logged_in') }}</div>
-            </div>
-        </div>
-    </div> --}}
-    {{-- {{ dd($fields) }} --}}
     @foreach($fields as $f => $field)
         <div class="row">
             <div class="col-sm-6">
@@ -39,7 +27,7 @@
                     <h5>CP = Cukup Puas</h5>
                     <h5>P =  Puas</h5>
                     <h5>SP = Sangat Puas</h5>
-                <div class="jumbotron">
+                </div>
             </div>
             <div class="col-sm-6">
                 <h1>Hasil CSI</h1>
