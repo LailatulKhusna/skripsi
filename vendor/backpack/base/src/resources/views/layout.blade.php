@@ -135,6 +135,7 @@
     <script src="{{ asset('vendor/adminlte') }}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     {{-- <script src="{{ asset('vendor/adminlte') }}/bower_components/fastclick/lib/fastclick.js"></script> --}}
     <script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.14.0/printThis.min.js"></script>
 
     <!-- page script -->
     <script type="text/javascript">

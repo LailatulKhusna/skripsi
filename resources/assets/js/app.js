@@ -7,8 +7,12 @@
 
 require('./bootstrap');
 
+import $ from 'jquery'
 window.Vue = require('vue');
 import Chart from 'chart.js'
+// window.printJs = require('print-js')
+// window.printThis = require('print-this')
+// import printThis from 'print-this'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
