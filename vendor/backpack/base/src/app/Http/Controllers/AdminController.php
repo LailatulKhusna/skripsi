@@ -26,6 +26,7 @@ class AdminController extends Controller
 
         $sessions= Session::with('branch','fields.questions.answer','review')->get();
 
+        $data = [];
         foreach ($sessions as $session) {
 
             foreach ($session['fields'] as $field) {
