@@ -35,7 +35,7 @@ class FieldlistCrudController extends CrudController
         $this->crud->query->where('branch_id',Auth::user()->branch_id);
         
         
-         $this->crud->addField([
+        $this->crud->addField([
             'name'=>'branch_id',
             'label'=>'Cabang',
             'type'=>'select',

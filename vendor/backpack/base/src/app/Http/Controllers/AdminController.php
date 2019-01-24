@@ -1,7 +1,9 @@
 <?php
 
 namespace Backpack\Base\app\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Session;
+use App\Models\Branch;
 
 class AdminController extends Controller
 {
@@ -24,10 +26,15 @@ class AdminController extends Controller
     {
         $title = "Laporan"; // set the page title
 
-        $sessions= Session::with('branch','fields.questions.answer','review')->get();
+        // $sessions= Session::with('branch','fields.questions.answer','review')->get();
+
+        $branch = Branch::
+        with('sessions.fields.questions.answer','sessions.review')
+        ->find(Auth::user()->branch_id);
 
         $data = [];
-        foreach ($sessions as $session) {
+
+        foreach ($branch['sessions'] as $session) {
 
             foreach ($session['fields'] as $field) {
 
