@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return redirect('admin/login');
+    return redirect('admin/dashboard');
 });
 
 Route::get('/admin',function(){
-	return redirect('admin/login');
+	return redirect('admin/dashboard');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::get('beranda','DashboardController@index');
