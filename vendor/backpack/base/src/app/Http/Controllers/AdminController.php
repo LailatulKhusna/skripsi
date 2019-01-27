@@ -33,12 +33,13 @@ class AdminController extends Controller
         ->find(Auth::user()->branch_id);
 
         $data = [];
+        $result = [];
+        $result['csi'] = 0;
+        $result['total_importance'] = 0;
+        $result['total_score'] = 0;
 
         foreach ($branch['sessions'] as $session) {
 
-            $data['csi'] = 0;
-            $data['total_importance'] = 0;
-            $data['total_score'] = 0;
             foreach ($session['fields'] as $field) {
 
                 $data[$field['name']]['total_performance'] = 0;
@@ -51,8 +52,8 @@ class AdminController extends Controller
                 foreach ($field['questions'] as $question) {
 
                     $data[$field['name']]['total_performance'] += $question['answer']['performance'];
-                    $data['total_importance'] += $question['answer']['importance'];
-                    $data['total_score'] += ($question['answer']['performance']*$question['answer']['importance']);
+                    $result['total_importance'] += $question['answer']['importance'];
+                    $result['total_score'] += ($question['answer']['performance']*$question['answer']['importance']);
 
                     if ($question['answer']['performance'] == 1) {
                         $data[$field['name']]['performance']['tp'] += $question['answer']['performance'];
@@ -70,15 +71,15 @@ class AdminController extends Controller
 
             }
 
-            if ($data['total_importance'] == 0 || $data['total_score'] == 0) {
-                $data['csi'] = 0;                    
-            } else {
-                $data['csi'] = number_format(($data['total_score']/(5*$data['total_importance']))*100,0,'','');
-            }
-
         }
 
-        return view('backpack::dashboard', ['title'=>$title,'fields'=>$data]);
+        if ($result['total_importance'] == 0 || $result['total_score'] == 0) {
+                $result['csi'] = 0;                    
+        } else {
+            $result['csi'] = number_format(($result['total_score']/(5*$result['total_importance']))*100,0,'','');
+        }
+
+        return view('backpack::dashboard', ['title'=>$title,'fields'=>$data,'result'=>$result]);
     }
 
     /**

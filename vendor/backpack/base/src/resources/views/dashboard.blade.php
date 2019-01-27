@@ -55,7 +55,7 @@
                     <div class="col-sm-12 container">
                         <h3>Hasil CSI</h3>
                         <br>
-                        <chart-csi-component :csi="{{ $fields['csi'] }}"></chart-csi-component>
+                        <chart-csi-component :csi="{{ $result['csi'] }}"></chart-csi-component>
 
                         <br> 
                         <br> 
