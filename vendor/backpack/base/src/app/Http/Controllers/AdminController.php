@@ -68,7 +68,12 @@ class AdminController extends Controller
 
                 }
 
-                $data[$field['name']]['csi'] = number_format(($data[$field['name']]['total_score']/(5*$data[$field['name']]['total_importance']))*100,0,'','');
+                if ($data[$field['name']]['total_importance'] == 0 || $data[$field['name']]['total_score'] == 0) {
+                    $data[$field['name']]['csi'] = 0;                    
+                } else {
+
+                    $data[$field['name']]['csi'] = number_format(($data[$field['name']]['total_score']/(5*$data[$field['name']]['total_importance']))*100,0,'','');
+                }
 
             }
 
