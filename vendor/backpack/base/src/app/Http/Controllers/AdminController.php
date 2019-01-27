@@ -36,12 +36,12 @@ class AdminController extends Controller
 
         foreach ($branch['sessions'] as $session) {
 
+            $data['csi'] = 0;
+            $data['total_importance'] = 0;
+            $data['total_score'] = 0;
             foreach ($session['fields'] as $field) {
 
                 $data[$field['name']]['total_performance'] = 0;
-                $data[$field['name']]['total_importance'] = 0;
-                $data[$field['name']]['total_score'] = 0;
-                $data[$field['name']]['csi'] = 0;
                 $data[$field['name']]['performance']['tp'] = 0;
                 $data[$field['name']]['performance']['kp'] = 0;
                 $data[$field['name']]['performance']['cp'] = 0;
@@ -51,8 +51,8 @@ class AdminController extends Controller
                 foreach ($field['questions'] as $question) {
 
                     $data[$field['name']]['total_performance'] += $question['answer']['performance'];
-                    $data[$field['name']]['total_importance'] += $question['answer']['importance'];
-                    $data[$field['name']]['total_score'] += ($question['answer']['performance']*$question['answer']['importance']);
+                    $data['total_importance'] += $question['answer']['importance'];
+                    $data['total_score'] += ($question['answer']['performance']*$question['answer']['importance']);
 
                     if ($question['answer']['performance'] == 1) {
                         $data[$field['name']]['performance']['tp'] += $question['answer']['performance'];
@@ -68,13 +68,12 @@ class AdminController extends Controller
 
                 }
 
-                if ($data[$field['name']]['total_importance'] == 0 || $data[$field['name']]['total_score'] == 0) {
-                    $data[$field['name']]['csi'] = 0;                    
-                } else {
+            }
 
-                    $data[$field['name']]['csi'] = number_format(($data[$field['name']]['total_score']/(5*$data[$field['name']]['total_importance']))*100,0,'','');
-                }
-
+            if ($data['total_importance'] == 0 || $data['total_score'] == 0) {
+                $data['csi'] = 0;                    
+            } else {
+                $data['csi'] = number_format(($data['total_score']/(5*$data['total_importance']))*100,0,'','');
             }
 
         }

@@ -16,19 +16,51 @@
 @section('content')
     <button onclick="printthis()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-print"></i> Print</button><hr>
     <div id="print-this">
-    @foreach($fields as $f => $field)
-    <div class="panel panel-danger">
-        <div class="panel-heading">
-            <h3>Laporan Kepuasan Pelanggan AHASS Handayani</h3>
+        @foreach($fields as $f => $field)
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3>Laporan Kepuasan Pelanggan AHASS Handayani</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12 container">
+
+                            <h3>Bidang {{ $f }}</h3>
+                            <chart-performance-component id="canvas" :chartdata="{{ json_encode($field['performance']) }}"></chart-performance-component>
+
+                            <br>
+                            <p><h4>Keterangan Grafik :</h4></p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>TP = Tidak Puas</h5>
+                                    <h5>KP = Kurang Puas</h5>
+                                    <h5>CP = Cukup Puas</h5>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5>P =  Puas</h5>
+                                    <h5>SP = Sangat Puas</h5>
+                                </div>
+                            </div>
+                    </div>
+                </div>  
+            </div>
         </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-6 container">
-
-                        <h3>Bidang {{ $f }}</h3>
-                        <chart-performance-component id="canvas" :chartdata="{{ json_encode($field['performance']) }}"></chart-performance-component>
-
+        @endforeach    
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3>Hasil CSI</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12 container">
+                        <h3>Hasil CSI</h3>
                         <br>
+                        <chart-csi-component :csi="{{ $fields['csi'] }}"></chart-csi-component>
+
+                        <br> 
+                        <br> 
+                        <br> 
+                        <br>   
                         <p><h4>Keterangan Grafik :</h4></p>
                         <div class="row">
                             <div class="col-sm-6">
@@ -41,34 +73,12 @@
                                 <h5>SP = Sangat Puas</h5>
                             </div>
                         </div>
-                </div>
-                <div class="col-sm-6">
-                    <h3>Hasil CSI</h3>
-                    <br>
-                    <chart-csi-component :csi="{{ $field['csi'] }}"></chart-csi-component>
 
-                    <br> 
-                    <br> 
-                    <br> 
-                    <br>   
-                    <p><h4>Keterangan Grafik :</h4></p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h5>TP = Tidak Puas</h5>
-                            <h5>KP = Kurang Puas</h5>
-                            <h5>CP = Cukup Puas</h5>
-                        </div>
-                        <div class="col-sm-6">
-                            <h5>P =  Puas</h5>
-                            <h5>SP = Sangat Puas</h5>
-                        </div>
                     </div>
-
                 </div>
-            </div>  
+            </div>
         </div>
-    </div>
-    @endforeach    
+
     </div>
 @endsection
 
