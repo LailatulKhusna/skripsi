@@ -23,6 +23,6 @@ class FieldsTableSeeder extends Seeder
         	'description' => 'tentang kebersihan bengkel'
         ]];
 
-        DB::table('fields')->insert($data);
+        // DB::table('fields')->insert($data);
     }
 }

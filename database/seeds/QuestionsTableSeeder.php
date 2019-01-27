@@ -21,6 +21,6 @@ class QuestionsTableSeeder extends Seeder
         	'name' => 'apakah disiplin?'
         ]];
 
-        DB::table('questions')->insert($data);
+        // DB::table('questions')->insert($data);
     }
 }

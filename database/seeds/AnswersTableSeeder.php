@@ -21,6 +21,6 @@ class AnswersTableSeeder extends Seeder
         	'performance' => '3'
         ]];
 
-        DB::table('answers')->insert($data);
+        // DB::table('answers')->insert($data);
     }
 }
