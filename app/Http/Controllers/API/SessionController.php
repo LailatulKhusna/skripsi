@@ -98,8 +98,8 @@ class SessionController extends Controller
 
                     $answers = new Answer;
                     $answers->question_id=$questions->id;
-                    $answers->importance=$question_list['importance'];
-                    $answers->performance=$question_list['performance'];
+                    $answers->importance=$question_list['importance'] ?? 4;
+                    $answers->performance=$question_list['performance'] ?? 4;
                     $answers->save();
                 }
             }
