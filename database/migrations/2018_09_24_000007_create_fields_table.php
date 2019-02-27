@@ -22,7 +22,7 @@ class CreateFieldsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('session_id')->references('id')->on('branchs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('field_list_id')->references('id')->on('field_lists')->onDelete('cascade')->onUpdate('cascade');
         });
     }
