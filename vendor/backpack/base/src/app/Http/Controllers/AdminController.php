@@ -29,7 +29,7 @@ class AdminController extends Controller
         // $sessions= Session::with('branch','fields.questions.answer','review')->get();
 
         $branch = Branch::
-        with('sessions.fields.questions.answer','sessions.review')
+        with('sessions.fields.questions.answer','sessions.review','sessions.questions.answer')
         ->find(Auth::user()->branch_id);
 
         $data = [];
@@ -37,6 +37,55 @@ class AdminController extends Controller
         $result['csi'] = 0;
         $result['total_importance'] = 0;
         $result['total_score'] = 0;
+        $table = [];
+
+        foreach ($branch['sessions'] as $s => $session) {
+             # code...
+            foreach ($session['fields'] as $f => $field) {
+                # code...
+                foreach ($field['questions'] as $q => $question) {
+                    # code...
+                    $table['importance'][$q]['value'] ?? $table['importance'][$q]['value'] = [];
+                    array_push($table['importance'][$q]['value'],$question['answer']['importance']); 
+                    $table['importance'][$q]['total'] ?? $table['importance'][$q]['total'] = 0;
+                    $table['importance'][$q]['total'] += $question['answer']['importance'];
+                    $table['importance'][$q]['average'] ?? $table['importance'][$q]['average'] = 0;
+                    $table['importance'][$q]['average'] = $table['importance'][$q]['total']/count($table['importance'][$q]['value']);
+
+                    $table['performance'][$q]['value'] ?? $table['performance'][$q]['value'] = [];
+                    array_push($table['performance'][$q]['value'],$question['answer']['performance']); 
+                    $table['performance'][$q]['total'] ?? $table['performance'][$q]['total'] = 0;
+                    $table['performance'][$q]['total'] += $question['answer']['performance'];
+                    $table['performance'][$q]['average'] ?? $table['performance'][$q]['average'] = 0;
+                    $table['performance'][$q]['average'] = $table['performance'][$q]['total']/count($table['performance'][$q]['value']);
+
+                    $table['merge']['value'][$q]['importance'] = $table['importance'][$q]['average'];
+                    $table['merge']['value'][$q]['performance'] = $table['performance'][$q]['average'];
+
+                    $table['merge']['value'][$q]['ixp'] = $table['merge']['value'][$q]['importance']*$table['merge']['value'][$q]['performance'];
+
+                }
+            }
+        } 
+
+        foreach ($table['merge']['value'] as $v => $val) {
+            # code...
+            $table['merge']['total_importance'] ?? $table['merge']['total_importance'] = 0;
+            $table['merge']['total_importance'] += $val['importance'];
+
+            $table['merge']['total_performance'] ?? $table['merge']['total_performance'] = 0;
+            $table['merge']['total_performance'] += $val['performance'];
+
+            $table['merge']['total_ixp'] ?? $table['merge']['total_ixp'] = 0;
+            $table['merge']['total_ixp'] += $val['ixp'];
+        }
+
+        $table['csi'] = ($table['merge']['total_ixp'] / (5*$table['merge']['total_importance']))*100;
+
+
+
+        // dd($branch);
+        // return response()->json($table);
 
         foreach ($branch['sessions'] as $session) {
 
@@ -79,7 +128,7 @@ class AdminController extends Controller
             $result['csi'] = number_format(($result['total_score']/(5*$result['total_importance']))*100,0,'','');
         }
 
-        return view('backpack::dashboard', ['title'=>$title,'fields'=>$data,'result'=>$result]);
+        return view('backpack::dashboard', ['title'=>$title,'table'=>$table,'fields'=>$data,'result'=>$result]);
     }
 
     /**

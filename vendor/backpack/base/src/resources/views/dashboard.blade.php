@@ -15,6 +15,92 @@
 
 @section('content')
     <button onclick="printthis()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-print"></i> Print</button><hr>
+
+    {{-- table --}}
+    <h3>Tabel Kepentingan</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <td>No</td>
+                <td>Soal</td>
+                <td>Kepentingan</td>
+                <td>Total</td>
+                <td>Average</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{-- {{ dd($table[0]) }} --}}
+            @foreach($table['importance'] as $r => $row)
+            <tr>
+                <td>{{ $r+1 }}</td>
+                <td>A{{ $r+1 }}</td>
+                <td>
+                    @foreach ($row['value'] as $v => $val)
+                        {{-- expr --}}
+                        {{ $v != 0 ? ',':null }}{{ $val }}
+                    @endforeach
+                </td>
+                <td>{{ $row['total'] }}</td>
+                <td>{{ $row['average'] }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h3>Tabel Kinerja</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <td>No</td>
+                <td>Soal</td>
+                <td>Kinerja</td>
+                <td>Total</td>
+                <td>Average</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{-- {{ dd($table[0]) }} --}}
+           @foreach($table['performance'] as $r => $row)
+            <tr>
+                <td>{{ $r+1 }}</td>
+                <td>A{{ $r+1 }}</td>
+                <td>
+                    @foreach ($row['value'] as $v => $val)
+                        {{-- expr --}}
+                        {{ $v != 0 ? ',':null }}{{ $val }}
+                    @endforeach
+                </td>
+                <td>{{ $row['total'] }}</td>
+                <td>{{ $row['average'] }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <table class="table table-striped table-bordered"> 
+        <thead> 
+            <tr> 
+                <td>No.</td>
+                <td>Soal</td>
+                <td>Kepentingan</td>
+                <td>Kinerja</td>
+                <td>Kepentingan x Kinerja</td>
+            </tr>
+        </thead>
+        <tbody> 
+            @foreach ($table['merge']['value'] as $r => $row)
+                {{-- expr --}}
+                <tr> 
+                    <td>{{ $r+1 }}</td>
+                    <td>A{{ $r+1 }}</td>
+                    <td>{{ $row['importance'] }}</td>
+                    <td>{{ $row['performance'] }}</td>
+                    <td>{{ $row['ixp'] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
     <div id="print-this">
         @foreach($fields as $f => $field)
         <div class="panel panel-danger">
@@ -55,7 +141,7 @@
                     <div class="col-sm-12 container">
                         <h3>Hasil CSI</h3>
                         <br>
-                        <chart-csi-component :csi="{{ $result['csi'] }}"></chart-csi-component>
+                        <chart-csi-component :csi="{{ number_format($table['csi'],2,'.','') }}"></chart-csi-component>
 
                         <br> 
                         <br> 

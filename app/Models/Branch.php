@@ -49,7 +49,6 @@ class Branch extends Model
     public function review_lists(){
         return $this->hasMany('App\Models\Reviewlist');
     }
-   
 
     /*
     |--------------------------------------------------------------------------

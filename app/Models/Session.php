@@ -48,6 +48,10 @@ class Session extends Model
         return $this->hasMany('App\Models\Field');
     }
 
+    public function questions(){
+        return $this->hasManyThrough('App\Models\Question','App\Models\Field');
+    }
+
 
 
     /*

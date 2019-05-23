@@ -19,4 +19,8 @@ class Session extends Model
     {
         return $this->hasMany('App\Models\Review');
     }
+
+    public function questions(){
+        return $this->hasManyThrough('App\Models\Question','App\Models\Field');
+    }
 }
