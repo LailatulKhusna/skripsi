@@ -68,19 +68,21 @@ class AdminController extends Controller
             }
         } 
 
-        foreach ($table['merge']['value'] as $v => $val) {
-            # code...
-            $table['merge']['total_importance'] ?? $table['merge']['total_importance'] = 0;
-            $table['merge']['total_importance'] += $val['importance'];
+        if(isset($table['merge'])){
+            foreach ($table['merge']['value'] as $v => $val) {
+                # code...
+                $table['merge']['total_importance'] ?? $table['merge']['total_importance'] = 0;
+                $table['merge']['total_importance'] += $val['importance'];
 
-            $table['merge']['total_performance'] ?? $table['merge']['total_performance'] = 0;
-            $table['merge']['total_performance'] += $val['performance'];
+                $table['merge']['total_performance'] ?? $table['merge']['total_performance'] = 0;
+                $table['merge']['total_performance'] += $val['performance'];
 
-            $table['merge']['total_ixp'] ?? $table['merge']['total_ixp'] = 0;
-            $table['merge']['total_ixp'] += $val['ixp'];
+                $table['merge']['total_ixp'] ?? $table['merge']['total_ixp'] = 0;
+                $table['merge']['total_ixp'] += $val['ixp'];
+            }
+
+            $table['csi'] = ($table['merge']['total_ixp'] / (5*$table['merge']['total_importance']))*100;
         }
-
-        $table['csi'] = ($table['merge']['total_ixp'] / (5*$table['merge']['total_importance']))*100;
 
 
 

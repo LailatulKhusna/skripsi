@@ -30,6 +30,7 @@
         </thead>
         <tbody>
             {{-- {{ dd($table[0]) }} --}}
+            @if(isset($table['importance']))
             @foreach($table['importance'] as $r => $row)
             <tr>
                 <td>{{ $r+1 }}</td>
@@ -44,6 +45,7 @@
                 <td>{{ $row['average'] }}</td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 
@@ -60,7 +62,8 @@
         </thead>
         <tbody>
             {{-- {{ dd($table[0]) }} --}}
-           @foreach($table['performance'] as $r => $row)
+            @if(isset($table['performance']))
+            @foreach($table['performance'] as $r => $row)
             <tr>
                 <td>{{ $r+1 }}</td>
                 <td>A{{ $r+1 }}</td>
@@ -74,6 +77,7 @@
                 <td>{{ $row['average'] }}</td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 
@@ -88,6 +92,7 @@
             </tr>
         </thead>
         <tbody> 
+            @if(isset($table['merge']))
             @foreach ($table['merge']['value'] as $r => $row)
                 {{-- expr --}}
                 <tr> 
@@ -98,6 +103,7 @@
                     <td>{{ $row['ixp'] }}</td>
                 </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 
@@ -141,7 +147,7 @@
                     <div class="col-sm-12 container">
                         <h3>Hasil CSI</h3>
                         <br>
-                        <chart-csi-component :csi="{{ number_format($table['csi'],2,'.','') }}"></chart-csi-component>
+                        <chart-csi-component :csi="{{ number_format($table['csi'] ?? 0,2,'.','') }}"></chart-csi-component>
 
                         <br> 
                         <br> 
