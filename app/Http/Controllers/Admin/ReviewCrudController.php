@@ -32,6 +32,31 @@ class ReviewCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         
+
+        $this->crud->addColumn([
+            'name'=>'review_list_id',
+            'label'=>'Review',
+            'type'=>'select',
+            'entity'=>'review_list',
+            'attribute'=>'name',
+            'model'=>'App\Models\ReviewList'
+        ]);
+
+        $this->crud->addColumn([
+            'name'=>'session_id',
+            'label'=>'Sesi',
+            'type'=>'select',
+            'entity'=>'session',
+            'attribute'=>'name',
+            'model'=>'App\Models\Session'
+        ]);
+
+
+         $this->crud->addColumn([
+            'name'=>'name',
+            'label'=>'Kritik dan Saran'
+        ]);
+
         $this->crud->removeAllButtons();
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();

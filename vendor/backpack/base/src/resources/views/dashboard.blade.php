@@ -1,5 +1,13 @@
 @extends('backpack::layout')
 
+@section('after_styles')
+<style type="text/css">
+    .table thead td{
+        font-weight: bold;
+    }
+</style>
+@endsection
+
 @section('header')
     <section class="content-header">
       <h1>
@@ -17,15 +25,17 @@
     <button onclick="printthis()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-print"></i> Print</button><hr>
 
     {{-- table --}}
-    <h3>Tabel Kepentingan</h3>
+    <div class="alert alert-danger">
+        <strong><h4>Tabel Poin Kepentingan Kuisioner</h4></strong>
+    </div>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <td>No</td>
-                <td>Soal</td>
-                <td>Kepentingan</td>
+                <td>Kuisioner</td>
+                <td>Poin Kepentingan</td>
                 <td>Total</td>
-                <td>Average</td>
+                <td>Rata-rata</td>
             </tr>
         </thead>
         <tbody>
@@ -49,15 +59,17 @@
         </tbody>
     </table>
 
-    <h3>Tabel Kinerja</h3>
+    <div class="alert alert-danger">
+        <strong><h4>Tabel Poin Kinerja Kuisioner</h4></strong>
+    </div>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <td>No</td>
-                <td>Soal</td>
-                <td>Kinerja</td>
+                <td>Kuisioner</td>
+                <td>Poin Kinerja</td>
                 <td>Total</td>
-                <td>Average</td>
+                <td>Rata-rata</td>
             </tr>
         </thead>
         <tbody>
@@ -86,9 +98,9 @@
             <tr> 
                 <td>No.</td>
                 <td>Soal</td>
-                <td>Kepentingan</td>
-                <td>Kinerja</td>
-                <td>Kepentingan x Kinerja</td>
+                <td>Rata-rata Poin Kepentingan</td>
+                <td>Rata-rata Poin Kinerja</td>
+                <td>Rata-rata Kepentingan x Rata-rata Kinerja</td>
             </tr>
         </thead>
         <tbody> 
@@ -106,18 +118,21 @@
             @endif
         </tbody>
     </table>
+    <br>
+    <br>
 
     <div id="print-this">
-        @foreach($fields as $f => $field)
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h3>Laporan Kepuasan Pelanggan AHASS Handayani</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-12 container">
-
-                            <h3>Bidang {{ $f }}</h3>
+                    @foreach($fields as $f => $field)
+                    <div class="col-sm-6 container" style="padding-bottom: 50px;">
+                            <div class="alert alert-danger">
+                                <strong><h4>Bidang {{ $f }}</h4></strong>
+                            </div>
                             <chart-performance-component id="canvas" :chartdata="{{ json_encode($field['performance']) }}"></chart-performance-component>
 
                             <br>
@@ -134,18 +149,22 @@
                                 </div>
                             </div>
                     </div>
+                    @endforeach
+
+
                 </div>  
             </div>
         </div>
-        @endforeach    
         <div class="panel panel-danger">
             <div class="panel-heading">
-                <h3>Hasil CSI</h3>
+                <h3>Hasil Survei</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-12 container">
-                        <h3>Hasil CSI</h3>
+                        <div class="alert alert-success">
+                            <strong><h3>Hasil Survei Kepuasan Pelanggan Berdasarkan Perhitungan CSI</h3></strong>
+                        </div>
                         <br>
                         <chart-csi-component :csi="{{ number_format($table['csi'] ?? 0,2,'.','') }}"></chart-csi-component>
 
@@ -153,17 +172,50 @@
                         <br> 
                         <br> 
                         <br>   
-                        <p><h4>Keterangan Grafik :</h4></p>
+                        
                         <div class="row">
-                            <div class="col-sm-6">
-                                <h5>TP = Tidak Puas</h5>
-                                <h5>KP = Kurang Puas</h5>
-                                <h5>CP = Cukup Puas</h5>
-                            </div>
-                            <div class="col-sm-6">
-                                <h5>P =  Puas</h5>
-                                <h5>SP = Sangat Puas</h5>
-                            </div>
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+                                <p><h4>Keterangan Grafik :</h4></p>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Nilai CSI</th>
+                                            <th>Kategori</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr class="success">
+                                            <td>1</td>
+                                            <td>81%-100%</td>
+                                            <td>Sangat Puas</td>
+                                        </tr>
+                                        <tr class="info">
+                                            <td>2</td>
+                                            <td>66%-80%</td>
+                                            <td>Puas</td>
+                                        </tr>
+                                        <tr class="active">
+                                            <td>3</td>
+                                            <td>51%-65%</td>
+                                            <td>Cukup Puas</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>4</td>
+                                            <td>35%-50%</td>
+                                            <td>Kurang Puas</td>
+                                        </tr>
+                                        <tr class="danger">
+                                            <td>5</td>
+                                            <td>0%-34%</td>
+                                            <td>Tidak Puas</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                             </div>
+                             <div class="col-sm-4"></div>
                         </div>
 
                     </div>
