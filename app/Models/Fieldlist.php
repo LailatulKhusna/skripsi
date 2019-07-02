@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\Auth;
 
 class FieldList extends Model
 {
@@ -52,6 +53,10 @@ class FieldList extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function scopeBranch(Builder $builder, Model $model)
+    {
+        $builder->where('branch_id', Auth::user()->branch_id);
+    }
 
     /*
     |--------------------------------------------------------------------------

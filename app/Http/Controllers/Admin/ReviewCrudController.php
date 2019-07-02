@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\ReviewRequest as StoreRequest;
 use App\Http\Requests\ReviewRequest as UpdateRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ReviewCrudController
@@ -56,6 +57,10 @@ class ReviewCrudController extends CrudController
             'name'=>'name',
             'label'=>'Kritik dan Saran'
         ]);
+
+        $this->crud->query->whereHas('review_list.branch',function($query){
+            $query->where('id',Auth::user()->branch_id);
+        });
 
         $this->crud->removeAllButtons();
         // TODO: remove setFromDb() and manually define Fields and Columns

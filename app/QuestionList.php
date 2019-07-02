@@ -19,4 +19,11 @@ class QuestionList extends Model
         return $this->hasMany('App\Models\QuestionList');
     }
 
+    public function scopeBranch(Builder $builder, Model $model)
+    {
+        $builder->whereHas('field_list.branch',function($query){
+            $query->where('id',Auth::user()->branch_id);
+        });
+    }
+
 }

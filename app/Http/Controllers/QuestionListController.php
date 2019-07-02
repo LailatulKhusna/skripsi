@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\QuestionList;
+use App\Models\FieldList;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionListController extends Controller
 {
@@ -23,7 +26,9 @@ class QuestionListController extends Controller
      */
     public function create()
     {
-        //
+        // return "yey";
+        $data['fieldlists'] = FieldList::where('branch_id',Auth::user()->branch_id)->get();
+        return view('pages.questionlist.create',$data);
     }
 
     /**
@@ -35,6 +40,11 @@ class QuestionListController extends Controller
     public function store(Request $request)
     {
         //
+        $questionlist= new QuestionList();
+        $questionlist->fill($request->all());
+        $questionlist->save();
+
+        return redirect('/admin/questionlist');
     }
 
     /**

@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\QuestionlistRequest as StoreRequest;
 use App\Http\Requests\QuestionlistRequest as UpdateRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class QuestionlistCrudController
@@ -31,6 +32,9 @@ class QuestionlistCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        // $this->crud->removeButton('create');
+
+        $this->crud->addButtonFromModelFunction('top', 'create', 'openGoogle', 'beginning'); 
 
         $this->crud->addField([
             'name'=>'field_list_id',
@@ -39,7 +43,7 @@ class QuestionlistCrudController extends CrudController
             'entity'=>'field_list',
             'attribute'=>'name',
             'model'=>'App\Models\FieldList'
-        ]);
+        ]);     
 
         $this->crud->addColumn([
             'name'=>'field_list_id',
@@ -55,6 +59,14 @@ class QuestionlistCrudController extends CrudController
             'name'=>'name',
             'label'=>'Kuisioner'
         ]);
+
+        // $this->crud->addClause('whereHas', 'field_list.branch', function($query) {
+        //      $query->where('id',Auth::user()->branch_id);
+        //  });  
+
+        $this->crud->query->whereHas('field_list.branch',function($query){
+            $query->where('id',Auth::user()->branch_id);
+        });
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();

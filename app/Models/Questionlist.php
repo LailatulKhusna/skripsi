@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionList extends Model
 {
@@ -28,7 +29,10 @@ class QuestionList extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function openGoogle($crud = false)
+    {
+        return '<a class="btn btn-xs btn-default" href="/questionlists/create" data-toggle="tooltip" title="Just a demo custom button."><i class="fa fa-plus"></i> Create Question List</a>';
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -56,6 +60,12 @@ class QuestionList extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function scopeBranch(Builder $builder, Model $model)
+    {
+        $builder->whereHas('field_list.branch',function($query){
+            $query->where('id',Auth::user()->branch_id);
+        });
+    }
 
     /*
     |--------------------------------------------------------------------------
