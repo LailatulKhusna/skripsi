@@ -33,6 +33,11 @@ class QuestionList extends Model
     {
         return '<a class="btn btn-xs btn-default" href="/questionlists/create" data-toggle="tooltip" title="Just a demo custom button."><i class="fa fa-plus"></i> Create Question List</a>';
     }
+
+    public function editButton($value)
+    {
+        return '<a class="btn btn-xs btn-default" href="/questionlists/'.$value->id.'/edit" data-toggle="tooltip" title="Just a demo custom button."><i class="fa fa-plus"></i> Edit</a>';
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

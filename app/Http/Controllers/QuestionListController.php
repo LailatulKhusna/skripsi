@@ -66,7 +66,10 @@ class QuestionListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['fieldlists'] = FieldList::where('branch_id',Auth::user()->branch_id)->get();
+        $data['questionlist'] = QuestionList::find($id);
+        // dd($data);
+        return view('pages.questionlist.edit',$data);
     }
 
     /**
@@ -78,7 +81,11 @@ class QuestionListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $questionlist= QuestionList::with('field_list','question')->find($id);
+        $questionlist->fill($request->all());
+        $questionlist->save();
+
+        return redirect('/admin/questionlist');
     }
 
     /**

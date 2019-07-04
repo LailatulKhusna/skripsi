@@ -35,6 +35,7 @@ class QuestionlistCrudController extends CrudController
         // $this->crud->removeButton('create');
 
         $this->crud->addButtonFromModelFunction('top', 'create', 'openGoogle', 'beginning'); 
+        $this->crud->addButtonFromModelFunction('line', 'update', 'editButton', 'beginning'); 
 
         $this->crud->addField([
             'name'=>'field_list_id',
