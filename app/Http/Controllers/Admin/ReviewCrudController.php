@@ -58,7 +58,7 @@ class ReviewCrudController extends CrudController
             'label'=>'Kritik dan Saran'
         ]);
 
-        $this->crud->query->whereHas('review_list.branch',function($query){
+        $this->crud->query->whereHas('session.branch',function($query){
             $query->where('id',Auth::user()->branch_id);
         });
 
