@@ -58,7 +58,8 @@ class QuestionlistCrudController extends CrudController
 
         $this->crud->addColumn([
             'name'=>'name',
-            'label'=>'Kuisioner'
+            'label'=>'Kuisioner',
+            'limit'=>'250'
         ]);
 
         // $this->crud->addClause('whereHas', 'field_list.branch', function($query) {

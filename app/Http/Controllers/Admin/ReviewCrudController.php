@@ -43,29 +43,23 @@ class ReviewCrudController extends CrudController
             'model'=>'App\Models\ReviewList'
         ]);
 
-        $this->crud->addColumn([
-            'name'=>'session_id',
-            'label'=>'Sesi',
-            'type'=>'select',
-            'entity'=>'session',
-            'attribute'=>'name',
-            'model'=>'App\Models\Session'
-        ]);
+        // $this->crud->addColumn([
+        //     'name'=>'session_id',
+        //     'label'=>'Sesi',
+        //     'type'=>'select',
+        //     'entity'=>'session',
+        //     'attribute'=>'name',
+        //     'model'=>'App\Models\Session'
+        // ]);
 
 
          $this->crud->addColumn([
             'name'=>'name',
             'label'=>'Kritik dan Saran',
-            'limit' => 120,
+            'limit' => 250,
         ]);
 
-        $this->crud->removeColumn('session_id');
-
-        $this->crud->enableAjaxTable();  
-        $this->crud->removeButton( 'preview' );
-        $this->crud->removeButton( 'revisions' );
-
-
+        
         $this->crud->query->whereHas('session.branch',function($query){
             $query->where('id',Auth::user()->branch_id);
         });
