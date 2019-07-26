@@ -48,23 +48,19 @@ class FieldlistCrudController extends CrudController
             'name'=>'branch_id',
             'label'=>'Cabang',
             'type'=>'select',
-            'limit'=>29,
             'entity'=>'branch',
             'attribute'=>'name',
             'model'=>'App\Models\Branch'
-            
         ]);
 
         $this->crud->addColumn([
             'name'=>'name',
-            'label'=>'Bidang',
-            'limit'=>35
+            'label'=>'Bidang'
         ]);
 
         $this->crud->addColumn([
             'name'=>'description',
-            'label'=>'Deskripsi',
-            'limit'=>150
+            'label'=>'Deskripsi'
         ]);
 
         // TODO: remove setFromDb() and manually define Fields and Columns
