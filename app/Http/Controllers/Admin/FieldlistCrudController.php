@@ -55,16 +55,13 @@ class FieldlistCrudController extends CrudController
 
         $this->crud->addColumn([
             'name'=>'name',
-            'label'=>'Bidang',
-            'limit'=>50
+            'label'=>'Bidang'
         ]);
 
         $this->crud->addColumn([
             'name'=>'description',
-            'label'=>'Deskripsi',
-            'limit'=> 180   
+            'label'=>'Deskripsi'
         ]);
-
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
