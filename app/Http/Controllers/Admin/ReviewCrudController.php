@@ -55,8 +55,16 @@ class ReviewCrudController extends CrudController
 
          $this->crud->addColumn([
             'name'=>'name',
-            'label'=>'Kritik dan Saran'
+            'label'=>'Kritik dan Saran',
+            'limit' => 120,
         ]);
+
+        $this->crud->removeColumn('session_id');
+
+        $this->crud->enableAjaxTable();  
+        $this->crud->removeButton( 'preview' );
+        $this->crud->removeButton( 'revisions' );
+
 
         $this->crud->query->whereHas('session.branch',function($query){
             $query->where('id',Auth::user()->branch_id);
