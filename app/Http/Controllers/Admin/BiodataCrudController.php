@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Illuminate\Support\Facades\Auth;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BiodataRequest as StoreRequest;
@@ -32,10 +33,19 @@ class BiodataCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->query->whereHas('user',function($query){
+            $query->where('branch_id',Auth::user()->branch_id);
+        });
 
+
+        $this->crud->removeColumn('name');
         $this->crud->addColumn([
-            'name'=>'name',
-            'label'=>'Nama'
+            'name'=>'user_id',
+            'label'=>'nama',
+            'type'=>'select',
+            'entity'=>'user',
+            'attribute'=>'name',
+            'model'=>'App\Models\User'
         ]);
 
         $this->crud->addColumn([
