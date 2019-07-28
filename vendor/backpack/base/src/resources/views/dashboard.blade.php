@@ -175,12 +175,12 @@
                         <div class="row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4">
-                                <p><h4>Keterangan Grafik :</h4></p>
+                                <p><h4>Keterangan Grafik:</h4></p>
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nilai CSI</th>
+                                            <th>Persentase CSI</th>
                                             <th>Kategori</th>
                                         </tr>
                                     </thead>
