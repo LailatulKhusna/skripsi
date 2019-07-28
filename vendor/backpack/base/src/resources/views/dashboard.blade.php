@@ -26,14 +26,14 @@
 
     {{-- table --}}
     <div class="alert alert-danger">
-        <strong><h4>Tabel Poin Kepentingan Kuisioner</h4></strong>
+        <strong><h4>Tabel Poin Importance</h4></strong>
     </div>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <td>No</td>
-                <td>Kuisioner</td>
-                <td>Poin Kepentingan</td>
+                <td>Kode Pertanyaan</td>
+                <td>Poin Importance</td>
                 <td>Total</td>
                 <td>Rata-rata</td>
             </tr>
@@ -60,13 +60,13 @@
     </table>
 
     <div class="alert alert-danger">
-        <strong><h4>Tabel Poin Kinerja Kuisioner</h4></strong>
+        <strong><h4>Tabel Poin Performance</h4></strong>
     </div>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <td>No</td>
-                <td>Kuisioner</td>
+                <td>Kode Pertanyaan</td>
                 <td>Poin Kinerja</td>
                 <td>Total</td>
                 <td>Rata-rata</td>
@@ -98,9 +98,9 @@
             <tr> 
                 <td>No.</td>
                 <td>Soal</td>
-                <td>Rata-rata Poin Kepentingan</td>
-                <td>Rata-rata Poin Kinerja</td>
-                <td>Rata-rata Kepentingan x Rata-rata Kinerja</td>
+                <td>Rata-rata Poin Importance</td>
+                <td>Rata-rata Poin Performance</td>
+                <td>Rata-rata Importance x Rata-rata Performance</td>
             </tr>
         </thead>
         <tbody> 
@@ -170,8 +170,7 @@
 
                         <br> 
                         <br> 
-                        <br> 
-                        <br>   
+                        
                         
                         <div class="row">
                             <div class="col-sm-4"></div>

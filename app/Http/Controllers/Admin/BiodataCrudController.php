@@ -38,7 +38,8 @@ class BiodataCrudController extends CrudController
         });
 
 
-        $this->crud->removeColumn('name');
+        
+
         $this->crud->addColumn([
             'name'=>'user_id',
             'label'=>'nama',
@@ -58,6 +59,7 @@ class BiodataCrudController extends CrudController
             'label'=>'Jabatan'
         ]);
         
+        $this->crud->removeColumn('name');
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
