@@ -27,7 +27,6 @@ Route::group(['middleware'=>'auth'],function(){
 		"branchs"=>"BranchController",
 		"roles"=>"RoleController",
 		"users"=>"UserController",
-		"biodatas"=>"BiodataController",
 		"fieldlists"=>"FieldListController",
 		"questionlists"=>"QuestionListController",
 		"sessions"=>"SessionController",

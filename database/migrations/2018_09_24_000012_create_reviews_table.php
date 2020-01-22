@@ -18,6 +18,7 @@ class CreateReviewsTable extends Migration
             $table->unsignedInteger('review_list_id')->nullable();
             $table->unsignedInteger('session_id');
             $table->text('name')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

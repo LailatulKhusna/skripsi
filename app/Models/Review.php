@@ -18,8 +18,8 @@ class Review extends Model
     protected $table = 'reviews';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    // protected $guarded = ['id'];
+    protected $fillable = ['name','description','review_list_id','session_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

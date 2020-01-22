@@ -107,9 +107,8 @@ class SessionController extends Controller
         }
 
         if(isset($request['review'])){
-            $review = new Review;
+            $review = new Review($request->review);
             $review->session_id= $session->id;
-            $review->name=$request['review']['name'];
             $review->save();
         }
 

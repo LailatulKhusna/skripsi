@@ -23,7 +23,6 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		"branchs"=>"BranchController",
 		"roles"=>"RoleController",
 		"users"=>"UserController",
-		"biodatas"=>"BiodataController",
 		"fieldlists"=>"FieldListController",
 		"questionlists"=>"QuestionListController",
 		"sessions"=>"SessionController",
