@@ -188,28 +188,28 @@
                                     <tbody>
                                         <tr class="success">
                                             <td>1</td>
-                                            <td>81%-100%</td>
-                                            <td>Sangat Puas</td>
+                                            <td>0%-20%</td>
+                                            <td>Tidak Puas</td>
                                         </tr>
                                         <tr class="info">
                                             <td>2</td>
-                                            <td>66%-80%</td>
-                                            <td>Puas</td>
+                                            <td>21%-40%</td>
+                                            <td>Cukup Puas</td>
                                         </tr>
                                         <tr class="active">
                                             <td>3</td>
-                                            <td>51%-65%</td>
-                                            <td>Cukup Puas</td>
+                                            <td>41%-60%</td>
+                                            <td>Puas</td>
                                         </tr>
                                         <tr class="warning">
                                             <td>4</td>
-                                            <td>35%-50%</td>
-                                            <td>Kurang Puas</td>
+                                            <td>61%-80%</td>
+                                            <td>Puas</td>
                                         </tr>
                                         <tr class="danger">
                                             <td>5</td>
-                                            <td>0%-34%</td>
-                                            <td>Tidak Puas</td>
+                                            <td>81%-100%</td>
+                                            <td>Sangat Puas</td>
                                         </tr>
                                     </tbody>
                                 </table>
