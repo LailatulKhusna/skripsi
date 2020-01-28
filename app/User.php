@@ -41,7 +41,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Branch');
     }
 
-    // public function biodata(){
-    //     return $this->hasOne('App\Models\Biodata');
-    // }
+    public function biodata(){
+        return $this->hasOne('App\Models\Biodata');
+    }
 }
