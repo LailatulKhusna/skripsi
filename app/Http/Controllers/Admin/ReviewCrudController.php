@@ -55,8 +55,13 @@ class ReviewCrudController extends CrudController
 
          $this->crud->addColumn([
             'name'=>'name',
-            'label'=>'Kritik dan Saran',
+            'label'=>'Nama',
             'limit' => 250,
+        ]);
+
+         $this->crud->addColumn([
+            'name'=>'description',
+            'label'=>'Kritik dan Saran',
         ]);
 
         
